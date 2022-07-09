@@ -1,0 +1,31 @@
+.slider {
+   position: relative;
+	width: 100%;
+	height: 100%;
+   margin-bottom: 15px;
+}
+
+.window {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+.pagesContainer {
+	height: 100%;
+	display: flex;
+}
+
+.leftArrow {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   z-index: 10;
+}
+
+.rightArrow {
+   position: absolute;
+   right: 0;
+   top: 50%;
+   transform: translateY(-50%);
+}

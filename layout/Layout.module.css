@@ -1,0 +1,41 @@
+.wrapper {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto auto 1fr auto;
+
+	min-height: 100vh;
+	gap: 0 30px;
+	grid-template-areas:
+		"header"
+		"menu"
+		"body"
+		"footer";
+}
+
+.header {
+	background-color: #403B37;
+	grid-area: header;
+}
+
+.menu {
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 30px 0;
+	grid-area: menu;
+}
+
+.body {
+	width: 100%;
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 30px;
+	grid-area: body;
+}
+
+.footer {
+	width: 100%;
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 0 30px;
+	grid-area: footer;
+}

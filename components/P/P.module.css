@@ -1,0 +1,22 @@
+.p {
+	margin: 0;
+	transition: all 0.3s;
+}
+
+.small {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 24px;
+}
+
+.medium {
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+}
+
+.large {
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 29px;
+}

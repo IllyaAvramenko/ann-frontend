@@ -1,0 +1,19 @@
+.bullet {
+	display: inline-block;
+
+	width: 12px;
+	height: 12px;
+
+	opacity: 1;
+	border-radius: 50%;
+	background: #F25C54;
+}
+
+.bulletActive {
+	width: 12px;
+	height: 12px;
+
+	border: 2px solid #FFF;
+	border-color: #F25C54;
+	background-color: #FFF;
+}

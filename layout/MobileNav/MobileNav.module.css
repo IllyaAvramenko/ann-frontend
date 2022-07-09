@@ -1,0 +1,30 @@
+.nav {
+	margin: 0;
+	padding: 0;
+
+	list-style: none;
+
+	text-align: left;
+}
+
+.nav_link {
+	display: block;
+
+	border-color: #FFF3;
+	border-top: 1px solid white;
+}
+
+.nav_link a {
+	display: block;
+
+	padding: 20px 30px;
+
+	text-transform: uppercase;
+
+	color: white;
+
+	font-family: "Optima nova", sans-serif;
+	font-size: 0.9375em;
+	font-weight: 700;
+	font-style: normal;
+}

@@ -1,0 +1,60 @@
+.button {
+	display: inline-block;
+
+	min-height: 44px;
+	margin: 0;
+	padding: 8px 16px;
+
+	cursor: pointer;
+	user-select: none;
+	user-select: none;
+	user-select: none;
+	user-select: none;
+	user-select: none;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	text-decoration: none;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+
+	border: 1px solid transparent;
+
+	font-family: "Optima nova", sans-serif;
+	font-size: 1em;
+	font-weight: 400;
+	font-style: normal;
+	line-height: 1.8;
+	appearance: none;
+	appearance: none;
+	transition: all 0.3s;
+	outline: none;
+}
+
+.primary {
+	color: #FFF;
+	background-color: #F25C54;
+}
+
+.primary:hover {
+	color: #FFF;
+	background-color: #F68983;
+}
+
+.primary:active {
+	color: #FFF;
+	background-color: #F25C54;
+}
+
+.secondary {
+	padding: 10px 84px;
+
+	color: #F25C54;
+	border: 1px solid #F25C54;
+	background: none;
+}
+
+.secondary:hover {
+	color: #eba09c;
+	border: 1px solid #eba09c;
+}

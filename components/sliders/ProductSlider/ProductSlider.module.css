@@ -1,0 +1,17 @@
+.subSlider {
+	display: flex;
+	width: 100%;
+}
+
+.subSlide {
+	cursor: pointer;
+	margin: 0 10px;
+}
+
+.subSlide:first-child {
+	margin-left: 0;
+}
+
+.subSlide:last-child {
+	margin-right: 0;
+}

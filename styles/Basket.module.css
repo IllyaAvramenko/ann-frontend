@@ -1,0 +1,23 @@
+.productsHeader {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   margin: 15px 0px 30px 0px;
+}
+
+.subHeaders {
+   display: grid;
+   justify-items: end;
+}
+
+.info {
+   display: grid;
+   grid-template-rows: 1fr 1fr;
+   align-items: center;
+   justify-content: end;
+   row-gap: 30px;
+}
+
+.total {
+   display: flex;
+   justify-content: end;
+}
