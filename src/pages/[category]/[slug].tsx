@@ -23,38 +23,42 @@ const Product: FC<IProps> = ({ product }) => {
    };
    
    return (
-      <div className={s.body}>
-         <div className={s.slider}>
-            <ArtSlider images={product?.images ? product.images.map(img => `${process.env.NEXT_PUBLIC_DOMAIN}/api/products${img}`) : []} />
-         </div>
-         <div className={s.content}>
-            <Htag tag='h4' className={s.subTitle}>Anna Budzinska Art Shop</Htag>
-            <Htag tag='h1' className={s.title}>{product.title}</Htag>
-            <div className={s.offers}>
-               <div className={s.price}>
-                  <p>€ {product.price}.00</p>
+      <>
+         {product && (
+            <div className={s.body}>
+               <div className={s.slider}>
+                  <ArtSlider images={product?.images ? product.images.map(img => `${process.env.NEXT_PUBLIC_DOMAIN}/api/products${img}`) : []} />
                </div>
-               <div className={s.description}>
-                  <p>{product.description}</p>
+               <div className={s.content}>
+                  <Htag tag='h4' className={s.subTitle}>Anna Budzinska Art Shop</Htag>
+                  <Htag tag='h1' className={s.title}>{product.title}</Htag>
+                  <div className={s.offers}>
+                     <div className={s.price}>
+                        <p>€ {product.price}.00</p>
+                     </div>
+                     <div className={s.description}>
+                        <p>{product.description}</p>
+                     </div>
+                     <div className={s.buyButton}>
+                        <Button
+                           onClick={addToCartHandler}
+                           appearance='secondary'
+                           size='l'
+                        >Add to cart</Button>
+                     </div>
+                     <div className={s.chars}>
+                        <p>Title - {product.title}</p>
+                        <p>Material - {product.material}</p>
+                        <p>Size - {product.size}</p>
+                     </div>
+                  </div>
                </div>
-               <div className={s.buyButton}>
-                  <Button
-                     onClick={addToCartHandler}
-                     appearance='secondary'
-                     size='l'
-                  >Add to cart</Button>
-               </div>
-               <div className={s.chars}>
-                  <p>Title - {product.title}</p>
-                  <p>Material - {product.material}</p>
-                  <p>Size - {product.size}</p>
+               <div className={s.rec}>
+                  Recommendation
                </div>
             </div>
-         </div>
-         <div className={s.rec}>
-            Recommendation
-         </div>
-      </div>
+         )}
+      </>
    );
 };
 
@@ -69,11 +73,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
       return categoryPaths;
    });
 
-         return {
-            paths,
-            fallback: false
-         };
-
+   return {
+      paths,
+      fallback: true
+   };
 };
 
 interface IParams extends ParsedUrlQuery {
