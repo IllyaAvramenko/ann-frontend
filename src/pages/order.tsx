@@ -201,7 +201,7 @@ const Order: FC = () => {
                            key={_id}
                            title={title}
                            price={price}
-                           img={`${process.env.NEXT_PUBLIC_DOMAIN}/api/products${images[0]}`}
+                           img={images ? `${process.env.NEXT_PUBLIC_DOMAIN}/api/products${images[0]}` : ''}
                         />
                      ))}
                   </div>
