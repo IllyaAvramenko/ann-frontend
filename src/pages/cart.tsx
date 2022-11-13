@@ -36,15 +36,15 @@ const Cart = () => {
                </div>
             </div>
             <div className={s.productsWrapper}>
-               {products.data.map(p => (
+               {products.data.map(({ _id, slug, title, price, category, images }) => (
                   <CartProduct
-                     key={p._id}
-                     slug={p.slug}
-                     title={p.title}
-                     img={`${process.env.NEXT_PUBLIC_DOMAIN}/api/products${p.images[0]}`}
-                     price={p.price}
+                     key={_id}
+                     slug={slug}
+                     title={title}
+                     img={images ? `${process.env.NEXT_PUBLIC_DOMAIN}/api/products${images[0]}` : ''}
+                     price={price}
                      onRemove={removeFromCart}
-                     url={`/${p.category.name}/${p.slug}`}
+                     url={`/${category.name}/${slug}`}
                   />
                ))}
             </div>
