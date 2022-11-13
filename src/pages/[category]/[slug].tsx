@@ -25,7 +25,7 @@ const Product: FC<IProps> = ({ product }) => {
    return (
       <div className={s.body}>
          <div className={s.slider}>
-            <ArtSlider images={product.images ? product.images.map(img => `${process.env.NEXT_PUBLIC_DOMAIN}/api/products${img}`) : []} />
+            <ArtSlider images={product?.images ? product.images.map(img => `${process.env.NEXT_PUBLIC_DOMAIN}/api/products${img}`) : []} />
          </div>
          <div className={s.content}>
             <Htag tag='h4' className={s.subTitle}>Anna Budzinska Art Shop</Htag>
@@ -69,10 +69,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
       return categoryPaths;
    });
 
-   return {
-      paths,
-      fallback: true
-   };
+         return {
+            paths,
+            fallback: false
+         };
+
 };
 
 interface IParams extends ParsedUrlQuery {
