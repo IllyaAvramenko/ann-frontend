@@ -1,0 +1,37 @@
+.item {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background-color: #fafafa;
+   overflow: hidden;
+   border-radius: 4px;
+   margin-bottom: 15px;
+   padding: 1em;
+}
+
+.item__right {
+   display: flex;
+}
+
+.item__right_title {
+   margin-left: 15px;
+}
+
+.item__right_image {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 4px;
+   background-color: white;
+   max-width: 100px;
+   overflow: hidden;
+   max-height: 100px;
+}
+
+.item__right_image img {
+   height: 100%;
+}
+
+.item__left {
+
+}

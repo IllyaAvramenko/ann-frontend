@@ -8,7 +8,7 @@ import Link from 'next/link';
 interface IProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
    title: string
    price: number
-   img: string
+   img?: string
    description?: string
    url: string
 }
@@ -22,7 +22,7 @@ export const ProductItem: FC<IProps> = ({ description, img, price, title, url, c
          <Link href={url}>
             <div className={s.itemWrap}>
                <div className={s.photo}>
-                  <img src={img} alt="" />
+                  <img src={img || ''} alt="" />
                </div>
                <div className={s.content}>
                   <Htag tag='h3'>{title}</Htag>

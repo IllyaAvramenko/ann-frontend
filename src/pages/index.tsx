@@ -1,7 +1,4 @@
-import { Button } from '../components/Button/Button';
-import { Htag } from '../components/HTag/Htag';
-import { P } from '../components/P/P';
-import { Section } from '../components/Section/Section';
+import { Section } from '../components';
 import { MainSlider } from '../components/sliders/MainSlider/MainSlider';
 import { withLayout } from '../layout/Layout';
 import s from '../styles/Home.module.css';

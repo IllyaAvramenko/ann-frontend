@@ -3,19 +3,30 @@ import { ActionsType } from './cart.context';
 
 
 export interface IState {
-  products: IProduct[]
+  products: {
+    data: IProduct[],
+    isLoading: boolean,
+    error: string | null
+  },
   productsCount: number
 }
 
-export const initialState = {
-  products: [],
+export const initialState: IState = {
+  products: {
+    data: [],
+    isLoading: false,
+    error: null
+  },
   productsCount: 0
 };
 
 export const cartReducer = (state: IState, action: ActionsType): IState => {
   switch (action.type) {
     case 'ADD_DISPLAY_PRODUCTS': {
-      return { ...state, products: [...action.payload.products] };
+      return { ...state, products: {
+        ...state.products,
+        ...action.payload
+      }};
     }
 
     case 'INCREMENT_PRODUCTS_COUNT': {

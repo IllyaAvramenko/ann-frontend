@@ -5,28 +5,29 @@ import Link from 'next/link';
 import { Htag } from '../HTag/Htag';
 import { P } from '../P/P';
 
-interface IProps extends DetailedHTMLProps<HtmlHTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement> {
+interface IProps extends DetailedHTMLProps<HtmlHTMLAttributes<HTMLDivElement>, HTMLDivElement> {
    title: string
    img: string
    price: number
    slug: string
+   url: string
    onRemove: (slug: string) => void
 }
 
-export const CartProduct: FC<IProps> = React.memo(({ title, slug, img, price, className, onRemove, ...props }) => {
+export const CartProduct: FC<IProps> = React.memo(({ title, slug, img, url, price, className, onRemove, ...props }) => {
    return (
       <div
          className={cn(s.product, className)}
          {...props}
       >
          <div className={s.right}>
-            <Link href={`/shop/Quoadis`}>
+            <Link href={url}>
                <div className={s.image}>
                   <img src={img} alt="" />
                </div>
             </Link>
             <div>
-               <Link  href={`/shop/Quoadis`}>
+               <Link  href={url}>
                   <Htag 
                      tag='h2'
                      className={s.title}

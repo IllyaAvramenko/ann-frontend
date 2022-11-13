@@ -10,6 +10,7 @@ import { initializeProductInCart } from '../../context/cart/cart.actions';
 import useDebounce from '../../hooks/useDebounce';
 import { ApiClass } from '../../api/api';
 import { IProduct } from '../../types/Product.interface';
+import { SearchItem } from './SearchItem/SearchItem';
 
 interface IProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
 
@@ -18,7 +19,8 @@ export const Header: FC<IProps> = React.memo(({ className, ...props }) => {
 
    const { state, dispatch } = useCart();
 
-   const [products, setProducts] = useState<IProduct[]>();
+   const [products, setProducts] = useState<IProduct[]>([]);
+   const [isResultsModalOpen, setIsResultsModalOpen] = useState<boolean>(false);
    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
    const [value, setValue] = useState<string>('');
    const debouncedValue = useDebounce<string>(value, 700);
@@ -28,29 +30,55 @@ export const Header: FC<IProps> = React.memo(({ className, ...props }) => {
    }, []);
 
    useEffect(() => {
-      loadProducts();
+      if (debouncedValue) {
+         setIsResultsModalOpen(true);
+         loadProducts();
+      }
    }, [debouncedValue]);
 
    const loadProducts = async () => {
-      const products = await api.getProducts('', { search: debouncedValue });
-      console.log(products.data.items);
-      setProducts(products.data.items);
+      if (debouncedValue) {
+         const products = await api.getProducts('', { search: debouncedValue });
+         setProducts(products.data.items);
+      }
    };
 
    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
       setValue(event.target.value);
    };
+
+   const handleSubmit = (e: any) => {
+      e.preventDefault();
+      if (debouncedValue) {
+         setIsResultsModalOpen(true);
+         loadProducts();
+      }
+   };
    
    return (
+      <>
       <header
          {...props}
          className={cn(className, s.header)}
       >
          <div className={s.wrapper}>
             <div className={s.search}>
-               <form action="#">
+               <form action="#" onSubmit={handleSubmit}>
                   <input type="text" placeholder='Search' value={value} onChange={handleChange}/>
                </form>
+               <div className={cn(s.results, {
+                  [s.isResultsOpen]: isResultsModalOpen
+               })}>
+                  {products.map(p => (
+                     <SearchItem
+                        key={p._id}
+                        title={p.title}
+                        img={p.images ? `${process.env.NEXT_PUBLIC_DOMAIN}/api/products${p.images[0]}` : ''}
+                        price={p.price}
+                        url={`/${p.category.name}/${p.slug}`}
+                     />
+                  ))}
+               </div>
             </div>
             <div className={s.mobileMenu}>
                <MobileMenu 
@@ -73,6 +101,13 @@ export const Header: FC<IProps> = React.memo(({ className, ...props }) => {
             })}
             />
       </header>
+      <div 
+         className={cn(s.clickLayout, { 
+            [s.isClickLayoutShow]: isResultsModalOpen 
+         })}
+         onClick={() => setIsResultsModalOpen(false)}
+         ></div>
+      </>
    );
 });
 

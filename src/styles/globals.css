@@ -18,10 +18,10 @@ body {
 }
 
 a {
+	transition: all 0.1s;
 	text-decoration: none;
 
 	color: inherit;
-	transition: all 0.1s;
 }
 
 a:hover {

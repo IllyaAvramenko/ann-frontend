@@ -5,10 +5,8 @@ import { ParsedUrlQuery } from 'querystring';
 import { FC, SyntheticEvent } from 'react';
 import { ApiClass } from '../../api/api';
 import { ResWithPagination, SortEnum } from '../../api/api.types';
-import Pagination from '../../components/Pagination/Pagination';
-import { ProductItem } from '../../components/ProductItem/ProductItem';
-import { Select } from '../../components/Select/Select';
-import { Title } from '../../components/Title/Title';
+import { Pagination, ProductItem, Select, Title } from '../../components';
+import { usePageLoading } from '../../hooks/usePageLoading';
 import { withLayout } from '../../layout/Layout';
 import s from '../../styles/Shop.module.css';
 import { IProduct } from '../../types/Product.interface';
@@ -40,6 +38,7 @@ const BROWSE_BY_GENRE = [
 
 const Shop: FC<IProps> = ({ products, category, query }) => {
    const router = useRouter();
+   const isPageLoading = usePageLoading();
 
    const setPaginationHandler = (page: string | number) => {
       router.replace({
@@ -62,11 +61,10 @@ const Shop: FC<IProps> = ({ products, category, query }) => {
       });
    };
 
-
    return (
       <div className={s.body}>
          <div className={s.header}>
-            <Title>Arts</Title>
+            <Title>Arts {isPageLoading ? 'loading' : ''}</Title>
             <div className={s.filters}>
                <label htmlFor="BrowseBy">Browse by genre</label>
                <Select 
@@ -78,14 +76,14 @@ const Shop: FC<IProps> = ({ products, category, query }) => {
                      <option value={option.value}>{option.text}</option>
                   ))}
                </Select>
-               <label htmlFor="BrowseBy">Sort by</label>
+               <label htmlFor="SortBy">Sort by</label>
                <Select 
                   onChange={(e) => onSelectChangeHandler(e)}
                   defaultValue={query?.sortBy || 'createdAt-asc'}
                   name='sortBy'
                >
                   {SORT_BY_OPTIONS.map(option => (
-                     <option value={option.value}>{option.text}</option>
+                     <option key={option.value} value={option.value}>{option.text}</option>
                   ))}
                </Select>
             </div>
@@ -97,8 +95,9 @@ const Shop: FC<IProps> = ({ products, category, query }) => {
                   title={product.title}
                   url={`/${category}/${product.slug}`}
                   description={product.description} 
-                  price={product.price} 
-                  img='https://via.placeholder.com/1000' />
+                  price={product.price}
+                  img={product.images ? `${process.env.NEXT_PUBLIC_DOMAIN}/api/products${product.images[0]}` : ''}
+               />
             ))}
          </div>
          <Pagination

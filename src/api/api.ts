@@ -1,9 +1,10 @@
 import axios from 'axios';
+import { IOrder, OrderCreateType } from '../types/Order.interface';
 import { IProduct } from '../types/Product.interface';
 import { GetPathsResponseType, IGetProductsQueryParams, ResWithPagination } from './api.types';
 
 
-const BASE_URL = 'http://localhost:5000/api';
+const BASE_URL = process.env.NEXT_PUBLIC_DOMAIN + '/api';
 
 export class ApiClass {
    getPaths = async (): Promise<GetPathsResponseType> => {
@@ -21,7 +22,11 @@ export class ApiClass {
          }
       }
       queryStr = queryStr.slice(1);
-      console.log(queryStr);
+      
+      if (!categoryName) {
+         categoryName = 'ALL';
+      }
+
       const products = await axios.get<ResWithPagination<IProduct>>(`${BASE_URL}/products/get/all/${categoryName}?${queryStr}`);
 
       return products;
@@ -39,5 +44,11 @@ export class ApiClass {
       }).then(res => res.data);
 
       return products;
+   };
+   
+   createOrder = async (body: OrderCreateType): Promise<IOrder> => {
+      const { data } = await axios.post(`${BASE_URL}/orders/create`, body);
+
+      return data;
    };
 }

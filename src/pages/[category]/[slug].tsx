@@ -19,12 +19,13 @@ const Product: FC<IProps> = ({ product }) => {
 
    const addToCartHandler = () => {
       dispatch(addProductToCart(product.slug, router));
+      router.push('/cart');
    };
    
    return (
       <div className={s.body}>
          <div className={s.slider}>
-            <ArtSlider/>
+            <ArtSlider images={product.images.map(img => `${process.env.NEXT_PUBLIC_DOMAIN}/api/products${img}`)} />
          </div>
          <div className={s.content}>
             <Htag tag='h4' className={s.subTitle}>Anna Budzinska Art Shop</Htag>
@@ -40,6 +41,7 @@ const Product: FC<IProps> = ({ product }) => {
                   <Button
                      onClick={addToCartHandler}
                      appearance='secondary'
+                     size='l'
                   >Add to cart</Button>
                </div>
                <div className={s.chars}>
@@ -92,9 +94,9 @@ export const getStaticProps: GetStaticProps<IProps> = async ({ params }: GetStat
 
    if (!isPathExist) return { notFound: true };
 
-   const { data } = await api.getProductBySlug(slug);
-
    try {
+      const { data } = await api.getProductBySlug(slug);
+
       return {
          props: {
             product: data

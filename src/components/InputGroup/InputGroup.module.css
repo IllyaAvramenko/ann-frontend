@@ -1,0 +1,13 @@
+.inputGroup {
+   margin-top: 15px;
+}
+
+.inputGroup__title {
+   margin: 0 0 5px 7px;
+   font-weight: 500;
+}
+
+.inputGroup__wrapper {
+   display: flex;
+   flex-wrap: wrap;
+}

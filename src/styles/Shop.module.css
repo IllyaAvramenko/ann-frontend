@@ -21,6 +21,15 @@
 }
 
 .pag {
-	justify-content: center;
 	display: flex;
+	justify-content: center;
+}
+
+.filters {
+	display: flex;
+	align-items: center;
+	width: 50%;
+}
+.filters label {
+	white-space: nowrap;
 }

@@ -1,5 +1,5 @@
 export interface IProduct {
-   _id?: string
+   _id: string
    slug: string
    title: string
    description: string
@@ -10,6 +10,15 @@ export interface IProduct {
    material: string
    genre: GenreEnum
    categoryId: string
+   category: {
+      createdAt: Date
+      name: string
+      slug: string
+      updatedAt: Date
+      _id: string
+   }
+   sold: boolean
+   images?: string[]
 }
 
 export enum GenreEnum {

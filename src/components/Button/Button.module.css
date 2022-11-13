@@ -7,10 +7,7 @@
 
 	cursor: pointer;
 	user-select: none;
-	user-select: none;
-	user-select: none;
-	user-select: none;
-	user-select: none;
+	transition: all 0.3s;
 	text-align: center;
 	vertical-align: middle;
 	white-space: nowrap;
@@ -19,6 +16,7 @@
 	text-transform: uppercase;
 
 	border: 1px solid transparent;
+	outline: none;
 
 	font-family: "Optima nova", sans-serif;
 	font-size: 1em;
@@ -27,8 +25,8 @@
 	line-height: 1.8;
 	appearance: none;
 	appearance: none;
-	transition: all 0.3s;
-	outline: none;
+
+	margin-left: 15px;
 }
 
 .primary {
@@ -47,7 +45,7 @@
 }
 
 .secondary {
-	padding: 10px 84px;
+	/* padding: 10px 84px; */
 
 	color: #F25C54;
 	border: 1px solid #F25C54;
@@ -55,6 +53,18 @@
 }
 
 .secondary:hover {
-	color: #eba09c;
-	border: 1px solid #eba09c;
+	color: #EBA09C;
+	border: 1px solid #EBA09C;
+}
+
+.small {
+	min-width: 100px;
+}
+
+.middle {
+	min-width: 150px;
+}
+
+.large {
+	min-width: 250px;
 }

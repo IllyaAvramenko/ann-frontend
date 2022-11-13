@@ -12,6 +12,8 @@
 }
 
 .search {
+	position: relative;
+
 	width: 100%;
 }
 
@@ -34,11 +36,43 @@
 	background-size: 16px;
 }
 
+.search .results {
+	position: absolute;
+	z-index: 15;
+
+	display: none;
+
+	width: 25vw;
+	max-height: 500px;
+	margin-top: 8px;
+
+	background-color: white;
+	box-shadow: rgb(0 0 0 / 24%) 0 3px 8px;
+}
+
+.search .isResultsOpen {
+	display: block;
+}
+
+.clickLayout {
+	position: absolute;
+	z-index: 14;
+
+	display: none;
+
+	width: 100vw;
+	height: 100vh;
+}
+
+.isClickLayoutShow {
+	display: block;
+}
+
 .basket {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	justify-self: flex-end;
+	justify-self: end;
 
 	cursor: pointer;
 }
@@ -55,14 +89,18 @@
 
 .mobileNav {
 	display: none;
-	height: 0px;
+
+	height: 0;
+
 	transition: all 0.2s;
 	transform: scale(0);
 }
 
 .mobileNavOpen {
 	display: block;
+
 	height: 234px;
+
 	transform: scale(1);
 }
 

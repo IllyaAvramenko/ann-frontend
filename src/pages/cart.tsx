@@ -1,23 +1,26 @@
-import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { Button } from '../components/Button/Button';
 import { CartProduct } from '../components/CartProduct/CartProduct';
 import { P } from '../components/P/P';
 import { Title } from '../components/Title/Title';
-import { fetchCartProducts, removeProductFromCart } from '../context/cart/cart.actions';
+import { removeProductFromCart } from '../context/cart/cart.actions';
 import { useCart } from '../context/cart/cart.context';
+import { withCart } from '../HOCs/withCart';
 import { withLayout } from '../layout/Layout';
 import s from '../styles/Basket.module.css';
 
 const Cart = () => {
+   const router = useRouter();
 
-   const { state, dispatch } = useCart();
+   const { state: { products }, dispatch } = useCart();
 
-   useEffect(() => {
-      dispatch(fetchCartProducts());
-   }, []);
 
    const removeFromCart = async (slug: string) => {
       dispatch(removeProductFromCart(slug));
+   };
+
+   const onCheckout = () => {
+      router.push('/order');
    };
 
    return (
@@ -33,24 +36,36 @@ const Cart = () => {
                </div>
             </div>
             <div className={s.productsWrapper}>
-               {state.products.map(product => (
+               {products.data.map(p => (
                   <CartProduct
-                     key={product._id}
-                     slug={product.slug}
-                     title={product.title}
-                     img={'https://via.placeholder.com/1000'}
-                     price={product.price}
+                     key={p._id}
+                     slug={p.slug}
+                     title={p.title}
+                     img={`${process.env.NEXT_PUBLIC_DOMAIN}/api/products${p.images[0]}`}
+                     price={p.price}
                      onRemove={removeFromCart}
+                     url={`/${p.category.name}/${p.slug}`}
                   />
                ))}
             </div>
          </div>
          <div className={s.info}>
             <div className={s.total}>
-               <P>Total: <strong>€400,00</strong></P>
+               <P>Total: <strong>€{products.data.reduce((prev, curr) => prev + curr.price, 0)},00</strong></P>
             </div>
             <div className={s.buttons}>
-               <Button>
+               <Button 
+                  appearance='secondary' 
+                  size='l' 
+                  style={{ marginRight: '15px' }}
+                  onClick={() => router.push('/paintings')}   
+               >
+                  Continue shopping
+               </Button>
+               <Button
+                  disabled={products.isLoading || products.data.length <= 0}
+                  onClick={onCheckout}
+               >
                   Check out
                </Button>
             </div>
@@ -59,4 +74,4 @@ const Cart = () => {
    );
 };
 
-export default withLayout(Cart);
+export default withLayout(withCart(Cart));

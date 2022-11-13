@@ -13,7 +13,7 @@ interface IProps {
    className: string
 }
 
-const Pagination: FC<IProps> = props => {
+export const Pagination: FC<IProps> = props => {
    const {
       onPageChange,
       totalCount,
@@ -83,5 +83,3 @@ const Pagination: FC<IProps> = props => {
       </ul>
    );
 };
-
-export default Pagination;
