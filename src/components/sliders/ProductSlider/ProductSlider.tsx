@@ -9,7 +9,7 @@ interface IProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLD
    images: string[]
 }
 
-export const ArtSlider: FC<IProps> = ({ images, children, className, ...props }) => {
+export const ArtSlider: FC<IProps> = ({ images }) => {
    // const childrenCount = React.Children.count(children);
    const [slide, setSlide] = useState<number>(0);
 
