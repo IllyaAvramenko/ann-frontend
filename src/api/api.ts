@@ -8,8 +8,8 @@ const BASE_URL = process.env.NEXT_PUBLIC_DOMAIN + '/api';
 
 export class ApiClass {
    getPaths = async (): Promise<GetPathsResponseType> => {
-      const paths = await axios.get<GetPathsResponseType>(`${BASE_URL}/categories/get/paths`).then(res => res.data);
-      return paths;
+      const { data } = await axios.get<GetPathsResponseType>(`${BASE_URL}/categories/get/paths`);
+      return data;
    };
 
    getProducts = async (categoryName: string, queryParams: IGetProductsQueryParams = {}) => {
@@ -39,11 +39,11 @@ export class ApiClass {
    };
 
    getProductsBySlugs = async (slugs: string[]) => {
-      const products = await axios.post<IProduct[]>(`${BASE_URL}/products/get/slugs`, {
+      const { data } = await axios.post<IProduct[]>(`${BASE_URL}/products/get/slugs`, {
          slugs
-      }).then(res => res.data);
+      });
 
-      return products;
+      return data;
    };
    
    createOrder = async (body: OrderCreateType): Promise<IOrder> => {
