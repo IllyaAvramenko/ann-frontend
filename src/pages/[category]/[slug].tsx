@@ -66,16 +66,16 @@ const Product: FC<IProps> = ({ product }) => {
 export default withLayout(Product);
 
 export const getStaticPaths: GetStaticPaths = async () => {
-   // const api = new ApiClass();
-   // const res = await api.getPaths();
+   const api = new ApiClass();
+   const res = await api.getPaths();
 
-   // const paths = res.paths.flatMap(item => {
-   //    const categoryPaths = item.productsSlugs.map(slug => `/${item.name}/${slug}`);
-   //    return categoryPaths;
-   // });
+   const paths = res.paths.flatMap(item => {
+      const categoryPaths = item.productsSlugs.map(slug => `/${item.name}/${slug}`);
+      return categoryPaths;
+   });
 
    return {
-      paths: ['/paintings/roses_a619ua'],
+      paths,
       fallback: true
    };
 };
