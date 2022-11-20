@@ -101,7 +101,7 @@ export const getStaticProps: GetStaticProps<IProps> = async ({ params }: GetStat
    if (!isPathExist) return { notFound: true };
 
    try {
-      // const { data } = await api.getProductBySlug(slug);
+      const { data } = await api.getProductBySlug(slug);
       const product: IProduct = {
                _id: "6314c2c7ae497abd7f395b45",
                title: "Roses",
@@ -128,8 +128,9 @@ export const getStaticProps: GetStaticProps<IProps> = async ({ params }: GetStat
 
       return {
          props: {
-            product
-         }
+            product: data
+         },
+         notFound: false
       };
    } catch (e) {
       return { notFound: true };
