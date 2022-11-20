@@ -85,19 +85,20 @@ interface IParams extends ParsedUrlQuery {
 }
 
 export const getStaticProps: GetStaticProps<IProps> = async ({ params }: GetStaticPropsContext<ParsedUrlQuery>) => {
-   // if (!params) return { notFound: true };
-   // const { slug } = params as IParams;
-   // const api = new ApiClass();
-   // const res = await api.getPaths();
+   if (!params) return { notFound: true };
+   const { slug } = params as IParams;
+   const api = new ApiClass();
+   const res = await api.getPaths();
 
-   // const paths = res.paths.flatMap(item => {
-   //    const categoryPaths = item.productsSlugs.map(slug => `/${item.name}/${slug}`);
-   //    return categoryPaths;
-   // });
+   const paths = res.paths.flatMap(item => {
+      const categoryPaths = item.productsSlugs.map(slug => `/${item.name}/${slug}`);
+      return categoryPaths;
+   });
 
-   // const isPathExist = paths.find(path => path.split('/')[2] === slug);
+   const isPathExist = paths.find(path => path.split('/')[2] === slug);
+   console.log(isPathExist);
 
-   // if (!isPathExist) return { notFound: true };
+   if (!isPathExist) return { notFound: true };
 
    try {
       // const { data } = await api.getProductBySlug(slug);
