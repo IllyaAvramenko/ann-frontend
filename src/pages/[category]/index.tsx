@@ -6,7 +6,6 @@ import { FC, SyntheticEvent } from 'react';
 import { ApiClass } from '../../api/api';
 import { ResWithPagination, SortEnum } from '../../api/api.types';
 import { Pagination, ProductItem, Select, Title } from '../../components';
-import { usePageLoading } from '../../hooks/usePageLoading';
 import { withLayout } from '../../layout/Layout';
 import s from '../../styles/Shop.module.css';
 import { IProduct } from '../../types/Product.interface';
@@ -36,15 +35,16 @@ const BROWSE_BY_GENRE = [
    { value: 'ARCHITECTURE', text: 'Architecture' },
 ];
 
-const Shop: FC<IProps> = ({ products, category, query }) => {
+const Shop: FC<IProps> = ({ products, category, query, genres = [] }) => {
    const router = useRouter();
-   const isPageLoading = usePageLoading();
+   const genresBrowsing = BROWSE_BY_GENRE.filter(item => genres.includes(item.value) || item.value === 'ALL');
 
    const setPaginationHandler = (page: string | number) => {
       router.replace({
          query: { ...router.query, page: Number(page) - 1 }
       });
    };
+
 
    const onSelectChangeHandler = (e: SyntheticEvent<HTMLSelectElement>) => {
       // @ts-ignore
@@ -64,15 +64,15 @@ const Shop: FC<IProps> = ({ products, category, query }) => {
    return (
       <div className={s.body}>
          <div className={s.header}>
-            <Title>Arts {isPageLoading ? 'loading' : ''}</Title>
+            <Title>Arts</Title>
             <div className={s.filters}>
                <label htmlFor="BrowseBy">Browse by genre</label>
                <Select 
                   onChange={(e) => onSelectChangeHandler(e)}
                   defaultValue={query?.genre || 'ALL'}
-                  name='genre'
+                  name='genre'   
                >
-                  {BROWSE_BY_GENRE.map(option => (
+                  {genresBrowsing.map(option => (
                      <option value={option.value}>{option.text}</option>
                   ))}
                </Select>
@@ -129,11 +129,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
    const api = new ApiClass();
    const { data } = await api.getProducts(category, restQuery);
+   const genres = await api.getGenres(category);
 
    try {
       return {
          props: {
             products: data,
+            genres,
             category,
             query: context.query
          }
@@ -145,6 +147,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 interface IProps extends Record<string, unknown> {
    products: ResWithPagination<IProduct>
+   genres: string[]
    category: string
    query?: IQuery
 }

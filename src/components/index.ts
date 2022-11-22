@@ -21,3 +21,5 @@ export { Button } from './Button';
 export { OrderItem } from './OrderItem';
 
 export { P } from './P';
+
+export { Spinner } from './Spinner';

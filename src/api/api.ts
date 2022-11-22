@@ -32,6 +32,16 @@ export class ApiClass {
       return products;
    };
 
+   getGenres = async (categoryName: string): Promise<string[]> => {
+      if (!categoryName) {
+         categoryName = 'ALL';
+      }
+
+      const { data: { genres } } = await axios.get<{ genres: string[] }>(`${BASE_URL}/products/get/genres/${categoryName}`);
+
+      return genres;
+   };
+
    getProductBySlug = async (slug: string) => {
       const product = await axios.get<IProduct>(`${BASE_URL}/products/getBySlug/${slug}`);
 

@@ -25,6 +25,7 @@
 }
 
 .body {
+	position: relative;
 	width: 100%;
 	max-width: 1280px;
 	margin: 0 auto;
@@ -38,4 +39,15 @@
 	margin: 0 auto;
 	padding: 0 30px;
 	grid-area: footer;
+}
+
+.body__loader {
+	position: absolute;
+	width: calc(100% - 60px);
+	height: calc(100% - 60px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgb(255 255 255 / 40%);
+	z-index: 10;
 }

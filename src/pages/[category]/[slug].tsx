@@ -102,30 +102,7 @@ export const getStaticProps: GetStaticProps<IProps> = async ({ params }: GetStat
 
    try {
       const { data } = await api.getProductBySlug(slug);
-      const product: IProduct = {
-               _id: "6314c2c7ae497abd7f395b45",
-               title: "Roses",
-               description: "Beautiful roses from the princess's garden",
-               price: 400,
-               size: "20/40",
-               material: "Oil",
-               // @ts-ignore
-               genre: "LANDSCAPE",
-               categoryId: "62b1c005ca363c0e435e0848",
-               // @ts-ignore
-               createdAt: "2022-09-04T15:22:47.134Z",
-               // @ts-ignore
-               updatedAt: "2022-09-04T15:26:06.515Z",
-               slug: "roses_a619ua",
-               sold: false,
-               images: [
-                  "/images/d02b4bbbcfdbd2cb21da0ee84f2abf06",
-                  "/images/8a4488fb7e6bbd79bd7c0edf5d23f1a9",
-                  "/images/616884efc043c1d7de608e35f9b72315",
-                  "/images/d6b16d34416d74630e9caab7a8588af6"
-                  ]
-         };
-
+      
       return {
          props: {
             product: data

@@ -30,7 +30,9 @@ const Cart = () => {
          </div>
          <div className={s.products}>
             <div className={s.productsHeader}>
-               <div></div>
+               <div style={{ display: 'grid', justifyItems: 'start' }}>
+                  <P size='l'><strong>Arts</strong></P>
+               </div>
                <div className={s.subHeaders}>
                   <P size='l'><strong>Price</strong></P>
                </div>
