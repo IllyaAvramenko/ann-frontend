@@ -138,7 +138,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             genres,
             category,
             query: context.query
-         }
+         },
+         notFound: false
       };
    } catch (e) {
       return { notFound: true };

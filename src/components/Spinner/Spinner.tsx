@@ -56,5 +56,5 @@ export const Spinner = () => {
             </g>
             </svg>
       </div>
-   )
+   );
 };
