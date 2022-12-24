@@ -26,7 +26,7 @@ export const CartProduct: FC<IProps> = React.memo(({ title, slug, img, url, pric
                   <img src={img} alt="" />
                </div>
             </Link>
-            <div>
+            <div className={s.right__text}>
                <Link  href={url}>
                   <Htag 
                      tag='h2'

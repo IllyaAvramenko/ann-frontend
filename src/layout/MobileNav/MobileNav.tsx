@@ -19,13 +19,13 @@ export const MobileNav: FC<IProps> = ({ className, ...props }) => {
             <li className={s.nav_link}>
                <Link href='/paintings' >PAINTINGS</Link>    
             </li>
-            <li>
+            <li className={s.nav_link}>
                <Link href='/graphics' >GRAPHICS</Link>   
             </li>
-            <li>
+            <li className={s.nav_link}>
                <Link href='/sculpture_and_ceramics' >SCULPTURE</Link>
             </li>
-            <li>
+            <li className={s.nav_link}>
                <Link href='/about' >ABOUT</Link>   
             </li>
          </ul>

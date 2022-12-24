@@ -38,8 +38,10 @@ p {
 	color: #403B37;
 }
 
-* {
-	box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 /* Slider */

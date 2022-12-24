@@ -2,7 +2,7 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 
-	margin: 15px 0 30px;
+	margin: 15px 0 45px;
 }
 
 .productsWrapper {
@@ -11,7 +11,7 @@
 
 .productsWrapper::after {
 	position: absolute;
-	top: 0;
+	top: -15px;
 	display: block;
 	width: 100%;
 	height: 1px;
@@ -25,15 +25,38 @@
 }
 
 .info {
-	display: grid;
-	grid-template-rows: 1fr 1fr;
+	display: flex;
+	flex-direction: column;
+}
 
-	align-items: center;
-	justify-content: end;
-	row-gap: 30px;
+.buttons {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.buttons button:first-child {
+	margin-right: 15px;
 }
 
 .total {
 	display: flex;
 	justify-content: end;
+	margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+	.buttons {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.buttons button:first-child {
+		margin-bottom: 15px;
+		margin-right: 0;
+	}
+
+	.buttons button {
+		width: 100%;
+	}
 }

@@ -58,9 +58,10 @@
 	margin-left: 30px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
 	.menu {
 		grid-template-columns: 1fr;
+		padding: 15px 30px;
 	}
 
 	.title {
@@ -77,3 +78,10 @@
 		display: none;
 	}
 }
+
+@media (max-width: 768px) {
+	.title h1 {
+		font-size: 24px;
+	}
+}
+

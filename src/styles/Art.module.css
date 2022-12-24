@@ -47,3 +47,33 @@
 .rec {
 	grid-area: rec;
 }
+
+
+@media (max-width: 992px) {
+
+}
+
+@media (max-width: 768px) {
+  	.body {
+		grid-template-areas:
+        "slider slider"
+        "content content"
+        "rec rec";
+		grid-template-columns: 1fr;
+		gap: 15px;
+		grid-gap: 15px 0px;
+	}
+
+	.subTitle {
+		display: none;
+	}
+
+	.buyButton {
+		display: flex;
+		justify-content: center;
+	}
+	
+	.buyButton button {
+		width: 100%;
+	}
+}

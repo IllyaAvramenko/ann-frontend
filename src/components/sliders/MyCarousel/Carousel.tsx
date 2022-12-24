@@ -1,4 +1,5 @@
 import React, { FC, DetailedHTMLProps, HTMLAttributes, useState, useRef, useEffect } from 'react';
+import cn from 'classnames';
 import s from './Carousel.module.css';
 
 interface IProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -8,10 +9,10 @@ interface IProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLD
   setSlide: (numberSlide: number) => void
 }
 
-export const Carousel: FC<IProps> = ({ slide, setSlide, children }) => {
+export const Carousel: FC<IProps> = ({ slide, setSlide, className, children }) => {
 
   const [offset, setOffset] = useState<number>(0);
-  const [windowWidth, setWindowWidth] = useState<number>(0);
+  const [windowWidth, setWindowWidth] = useState<number>(0); // If window change it's size this value also need update width
 
   const windowElRef = useRef<any>();
 
@@ -47,7 +48,7 @@ export const Carousel: FC<IProps> = ({ slide, setSlide, children }) => {
   };
 
   return (
-    <div className={s.slider}>
+    <div className={cn(s.slider, className)}>
       <div 
         className={s.leftArrow}
         onClick={() => handleRight()} style={{ color: '#000' }}

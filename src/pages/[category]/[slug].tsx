@@ -45,7 +45,9 @@ const Product: FC<IProps> = ({ product }) => {
                            onClick={addToCartHandler}
                            appearance='secondary'
                            size='l'
-                        >Add to cart</Button>
+                        >
+                           Add to cart
+                        </Button>
                      </div>
                      <div className={s.chars}>
                         <p>Title - {product.title}</p>
@@ -96,7 +98,6 @@ export const getStaticProps: GetStaticProps<IProps> = async ({ params }: GetStat
    });
 
    const isPathExist = paths.find(path => path.split('/')[2] === slug);
-   console.log(isPathExist);
 
    if (!isPathExist) return { notFound: true };
 

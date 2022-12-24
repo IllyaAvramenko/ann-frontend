@@ -64,31 +64,41 @@ const Shop: FC<IProps> = ({ products, category, query, genres = [] }) => {
    return (
       <div className={s.body}>
          <div className={s.header}>
-            <Title>Arts</Title>
+            <Title className={s.header__title}>Arts</Title>
             <div className={s.filters}>
-               <label htmlFor="BrowseBy">Browse by genre</label>
-               <Select 
-                  onChange={(e) => onSelectChangeHandler(e)}
-                  defaultValue={query?.genre || 'ALL'}
-                  name='genre'   
-               >
-                  {genresBrowsing.map(option => (
-                     <option value={option.value}>{option.text}</option>
-                  ))}
-               </Select>
-               <label htmlFor="SortBy">Sort by</label>
-               <Select 
-                  onChange={(e) => onSelectChangeHandler(e)}
-                  defaultValue={query?.sortBy || 'createdAt-asc'}
-                  name='sortBy'
-               >
-                  {SORT_BY_OPTIONS.map(option => (
-                     <option key={option.value} value={option.value}>{option.text}</option>
-                  ))}
-               </Select>
+               <div className={s.input}>
+                  
+                  <label htmlFor="BrowseBy">Browse by genre</label>
+                  <Select 
+                     onChange={(e) => onSelectChangeHandler(e)}
+                     defaultValue={query?.genre || 'ALL'}
+                     name='genre'   
+                  >
+                     {genresBrowsing.map(option => (
+                        <option key={option.value} value={option.value}>{option.text}</option>
+                     ))}
+                  </Select>
+               </div>
+               <div className={s.input}>
+                  <label htmlFor="SortBy">Sort by</label>
+                  <Select 
+                     onChange={(e) => onSelectChangeHandler(e)}
+                     defaultValue={query?.sortBy || 'createdAt-asc'}
+                     name='sortBy'
+                  >
+                     {SORT_BY_OPTIONS.map(option => (
+                        <option key={option.value} value={option.value}>{option.text}</option>
+                     ))}
+                  </Select>
+               </div>
             </div>
          </div>
          <div className={s.products}>
+            {products.items.length === 0 && (
+               <div className={s.products__empty}>
+                  <div>There are no paintings</div>
+               </div>
+            )}
             {products.items.map(product => (
                <ProductItem 
                   key={product._id}

@@ -18,6 +18,7 @@ export const ArtSlider: FC<IProps> = ({ images }) => {
          <Carousel
             slide={slide}
             setSlide={setSlide}
+            className={s.slider}
          >
             {images.map(img => (
                <Slide key={img} className={s.slide}>

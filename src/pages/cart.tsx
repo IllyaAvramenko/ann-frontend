@@ -58,8 +58,7 @@ const Cart = () => {
             <div className={s.buttons}>
                <Button 
                   appearance='secondary' 
-                  size='l' 
-                  style={{ marginRight: '15px' }}
+                  size='l'
                   onClick={() => router.push('/paintings')}   
                >
                   Continue shopping
