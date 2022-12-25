@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import cn from 'classnames';
 import { FieldProps } from 'formik';
-import { createRef, FC, LegacyRef, RefAttributes, RefObject } from 'react';
+import { createRef, FC } from 'react';
 import s from './FormikSelect.module.css';
 import { RiArrowDownSFill } from "react-icons/ri";
 

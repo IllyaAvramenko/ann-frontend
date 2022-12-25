@@ -1,8 +1,7 @@
 import React, { FC, DetailedHTMLProps, HTMLAttributes } from 'react';
 import cn from 'classnames';
 import s from './Footer.module.css';
-import { Htag } from '../../components/HTag/Htag';
-import { P } from '../../components/P/P';
+import { Htag, P } from '../../components';
 
 interface IProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
 

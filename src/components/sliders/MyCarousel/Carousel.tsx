@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { FC, DetailedHTMLProps, HTMLAttributes, useState, useRef, useEffect } from 'react';
 import cn from 'classnames';
 import s from './Carousel.module.css';

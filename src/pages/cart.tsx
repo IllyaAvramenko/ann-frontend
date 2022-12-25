@@ -1,11 +1,7 @@
 import { useRouter } from 'next/router';
-import { Button } from '../components/Button/Button';
-import { CartProduct } from '../components/CartProduct/CartProduct';
-import { P } from '../components/P/P';
-import { Title } from '../components/Title/Title';
-import { removeProductFromCart } from '../context/cart/cart.actions';
-import { useCart } from '../context/cart/cart.context';
-import { withCart } from '../HOCs/withCart';
+import { Button, CartProduct, P, Title } from '../components';
+import { removeProductFromCart, useCart } from '../context/cart';
+import { withCart } from '../HOCs';
 import { withLayout } from '../layout/Layout';
 import s from '../styles/Basket.module.css';
 

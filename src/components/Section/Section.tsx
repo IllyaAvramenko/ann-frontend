@@ -15,7 +15,7 @@ interface IProps extends DetailedHTMLProps<HtmlHTMLAttributes<HTMLParagraphEleme
    reversed?: boolean
 }
 
-export const Section: FC<IProps> = ({ img, title, text, btnText, onBtnClick, reversed, children, className, ...props }) => {
+export const Section: FC<IProps> = ({ img, title, text, btnText, onBtnClick, reversed, className, ...props }) => {
    return (
       <section 
          className={cn(s.section, className, {

@@ -9,8 +9,7 @@ interface IputPropsType {
    half?: boolean
 }
 
-export const Input: FC<IputPropsType & FieldProps> = ({ 
-   label,
+export const Input: FC<IputPropsType & FieldProps> = ({
    half = false,
    field,
    form: { touched, errors },
@@ -23,7 +22,6 @@ export const Input: FC<IputPropsType & FieldProps> = ({
       <div className={cn(s.input__wrapper, {
          [s.input__half]: half
       })}>
-         {/* <label className={s.input__label} htmlFor={field.name}>{label}</label> */}
          <input 
             className={cn(s.input, {
                [s.input__error]: !!error && isTouched

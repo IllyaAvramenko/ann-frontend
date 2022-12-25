@@ -1,17 +1,15 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { FC } from 'react';
+import { useRouter } from 'next/router';
 import s from '../styles/Order.module.css';
 import { Form, Formik, Field, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 
-import { CartProvider, useCart } from '../context/cart/cart.context';
-import { createOrder } from '../context/cart/cart.actions';
-import { withCart } from '../HOCs/withCart';
-import { withProviders } from '../HOCs/withProviders';
 import { Input, InputGroup, Title, FormikSelect, Button, OrderItem, P } from '../components';
+import { CartProvider, useCart, createOrder } from '../context/cart';
+import { withCart, withProviders } from '../HOCs';
+import { useWindowSize } from '../hooks';
 import { Shape } from '../types/types';
-import { useRouter } from 'next/router';
-import { useWindowSize } from '../hooks/useWindowSize';
 
 
 const Order: FC = () => {

@@ -1,9 +1,8 @@
 import s from './SearchItem.module.css';
 import { DetailedHTMLProps, FC, HTMLAttributes } from 'react';
 import Link from 'next/link';
-import { Htag } from '../../../components/HTag/Htag';
+import { Htag, P } from '../../../components';
 import cn from 'classnames';
-import { P } from '../../../components/P/P';
 
 interface IProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
    title: string

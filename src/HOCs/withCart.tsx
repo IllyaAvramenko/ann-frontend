@@ -1,6 +1,5 @@
 import { FunctionComponent, useEffect } from 'react';
-import { fetchCartProducts } from '../context/cart/cart.actions';
-import { useCart } from '../context/cart/cart.context';
+import { fetchCartProducts, useCart } from '../context/cart';
 
 export const withCart = <T extends Record<string, unknown>>(Component: FunctionComponent<T>) => {
    return function WithCartComponent(props: T): JSX.Element {

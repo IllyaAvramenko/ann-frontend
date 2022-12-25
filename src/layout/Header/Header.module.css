@@ -85,26 +85,15 @@
 
 .mobileNav {
 	display: block;
-
 	height: 0;
-
 	transition: all 0.2s;
-	/* transform: scale(0); */
 }
 
 .mobileNavOpen {
-	/* display: block; */
-
 	height: 234px;
-
-	/* transform: scale(1); */
 }
 
 @media (max-width: 992px) {
-	.wrapper {
-		/* grid-template-columns: 1fr; */
-	}
-
 	.search {
 		display: none;
 	}

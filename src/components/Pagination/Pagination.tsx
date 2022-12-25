@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import classnames from 'classnames';
 import s from './Pagination.module.css';
-import { DOTS, usePagination } from '../../hooks/usePagination';
+import { DOTS, usePagination } from '../../hooks';
 import classNames from 'classnames';
 
 interface IProps {

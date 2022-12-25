@@ -1,13 +1,12 @@
 import React, { useState, FC, DetailedHTMLProps, HTMLAttributes, useEffect, ChangeEvent } from 'react';
 import cn from 'classnames';
 import s from './Header.module.css';
-import { P } from '../../components/P/P';
+import { P } from '../../components';
 import Link from 'next/link';
 import { MobileMenu } from '../MobileMenu/MobileMenu';
 import { MobileNav } from '../MobileNav/MobileNav';
-import { useCart } from '../../context/cart/cart.context';
-import { initializeProductInCart } from '../../context/cart/cart.actions';
-import useDebounce from '../../hooks/useDebounce';
+import { useCart, initializeProductInCart } from '../../context/cart';
+import { useDebounce } from '../../hooks';
 import { ApiClass } from '../../api/api';
 import { IProduct } from '../../types/Product.interface';
 import { SearchItem } from './SearchItem/SearchItem';
@@ -47,7 +46,7 @@ export const Header: FC<IProps> = React.memo(({ className, ...props }) => {
       setValue(event.target.value);
    };
 
-   const handleSubmit = (e: any) => {
+   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       if (debouncedValue) {
          setIsResultsModalOpen(true);

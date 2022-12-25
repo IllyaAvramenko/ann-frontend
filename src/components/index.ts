@@ -23,3 +23,9 @@ export { OrderItem } from './OrderItem';
 export { P } from './P';
 
 export { Spinner } from './Spinner';
+
+export { CartProduct } from './CartProduct';
+
+export { PageLoader } from './PageLoader';
+
+export { Tooltip } from './Tooltip';

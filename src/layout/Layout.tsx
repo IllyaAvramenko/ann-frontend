@@ -1,7 +1,7 @@
 import React, { DetailedHTMLProps, FunctionComponent, HTMLAttributes } from 'react';
-import { PageLoader } from '../components/PageLoader/PageLoader';
-import { CartProvider } from '../context/cart/cart.context';
-import { usePageLoading } from '../hooks/usePageLoading';
+import { PageLoader } from '../components';
+import { CartProvider } from '../context/cart';
+import { usePageLoading } from '../hooks';
 import { Footer } from './Footer/Footer';
 import { Header } from './Header/Header';
 import s from './Layout.module.css';

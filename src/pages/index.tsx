@@ -1,5 +1,5 @@
 import { Section } from '../components';
-import { MainSlider } from '../components/sliders/MainSlider/MainSlider';
+import { MainSlider } from '../components/sliders';
 import { withLayout } from '../layout/Layout';
 import s from '../styles/Home.module.css';
 

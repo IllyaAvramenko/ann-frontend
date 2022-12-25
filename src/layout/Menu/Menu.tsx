@@ -1,7 +1,7 @@
 import React, { FC, DetailedHTMLProps, HTMLAttributes } from 'react';
 import cn from 'classnames';
 import s from './Menu.module.css';
-import { Htag } from '../../components/HTag/Htag';
+import { Htag } from '../../components';
 import Link from 'next/link';
 
 interface IProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
