@@ -99,11 +99,12 @@ export const Header: FC<IProps> = React.memo(({ className, ...props }) => {
             className={cn(s.mobileNav, {
                [s.mobileNavOpen]: isMobileMenuOpen 
             })}
-            />
+            onNavClick={() => setIsMobileMenuOpen(false)}
+         />
       </header>
       <div 
          className={cn(s.clickLayout, { 
-            [s.isClickLayoutShow]: isResultsModalOpen 
+            [s.isClickLayoutShow]: isResultsModalOpen // Div for closing search
          })}
          onClick={() => setIsResultsModalOpen(false)}
          ></div>

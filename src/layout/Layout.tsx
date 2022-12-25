@@ -1,5 +1,5 @@
 import React, { DetailedHTMLProps, FunctionComponent, HTMLAttributes } from 'react';
-import { Spinner } from '../components';
+import { PageLoader } from '../components/PageLoader/PageLoader';
 import { CartProvider } from '../context/cart/cart.context';
 import { usePageLoading } from '../hooks/usePageLoading';
 import { Footer } from './Footer/Footer';
@@ -20,9 +20,7 @@ const Layout: React.FC<IProps> = React.memo(({ children }) => {
          <Menu className={s.menu} />
          <div className={s.body}>
             {isPageLoading && (
-               <div className={s.body__loader}>
-                  <Spinner/>
-               </div>
+               <PageLoader />
             )}
             {children}
          </div>
